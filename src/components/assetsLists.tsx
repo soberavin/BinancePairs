@@ -1,4 +1,4 @@
-import { AssetsData, AssetType } from "./types";
+import { AssetType, AssetsData } from "../types";
 import "./assetsLists.css";
 import React, { ReactNode} from "react";
 
@@ -6,7 +6,6 @@ function Asset(props: AssetType) {
   return (
     <div className="pair">
       <b>{props.baseAsset}</b>/{props.quoteAsset}
-      {/* Type: {props.type} */}
     </div>
   );
 }
@@ -19,9 +18,9 @@ export function AssetsList(props: { data: AssetsData }) {
 
 
 
-  busdPairs.forEach(item => {busd.push(<Asset baseAsset={item.baseAsset} quoteAsset = {item.quoteAsset} type= {item.type}/>)})
-  usdtPairs.forEach(item => {usdt.push(<Asset baseAsset={item.baseAsset} quoteAsset = {item.quoteAsset} type= {item.type}/>)})
-  futuresPairs.forEach(item => {futures.push(<Asset baseAsset={item.baseAsset} quoteAsset = {item.quoteAsset} type= {item.type}/>)})
+  busdPairs.forEach((item) => {busd.push(<Asset {...item} key = {item.myId}/>)})
+  usdtPairs.forEach((item) => {usdt.push(<Asset {...item} key = {item.myId} />)})
+  futuresPairs.forEach((item)=> {futures.push(<Asset {...item} key = {item.myId}/>)})
 
   
 
